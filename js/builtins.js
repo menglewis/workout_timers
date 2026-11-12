@@ -17,20 +17,6 @@ function withRests(steps, restSec) {
 
 export const BUILTINS = [
   {
-    id: 'builtin-tabata',
-    builtIn: true,
-    name: 'Quick Tabata',
-    description: '8 rounds of 20 seconds all-out, 10 seconds rest.',
-    blocks: [
-      {
-        name: 'Tabata',
-        rounds: 8,
-        restBetweenRounds: 0,
-        steps: [w('High knees', 20, 'Drive your knees up, pump your arms.'), rest(10)],
-      },
-    ],
-  },
-  {
     id: 'builtin-7min',
     builtIn: true,
     name: '7-Minute Circuit',
@@ -99,6 +85,56 @@ export const BUILTINS = [
           cool('Deep breathing', 30),
         ],
       },
+    ],
+  },
+  {
+    id: 'builtin-short-hiit',
+    builtIn: true,
+    name: 'Short HIIT',
+    description: 'Two sets of five 30-second moves with a 45-second rest between.',
+    blocks: [
+      {
+        name: 'Set 1',
+        rounds: 1,
+        restBetweenRounds: 0,
+        steps: [
+          w('Star jumps', 30),
+          w('Fast running', 30),
+          w('High knees', 30),
+          w('Power jacks', 30),
+          w('Toe taps', 30),
+          rest(45),
+        ],
+      },
+      {
+        name: 'Set 2',
+        rounds: 1,
+        restBetweenRounds: 0,
+        steps: [
+          w('Star jumps', 30),
+          w('Walkouts', 30),
+          w('Squats', 30),
+          w('Jumping lunges', 30),
+          w('London bridges', 30),
+        ],
+      },
+    ],
+  },
+  {
+    id: 'builtin-intermediate-hiit',
+    builtIn: true,
+    name: 'Intermediate HIIT',
+    description: 'Jumping jacks, then six moves of 4 rounds each: 20 seconds on, 10 seconds rest.',
+    blocks: [
+      { name: 'Warm-up', rounds: 1, restBetweenRounds: 0, steps: [warm('Jumping jacks', 30)] },
+      ...[
+        'Jump lunge squats',
+        'Burpee jumps',
+        'Spiderman pushups',
+        'Jumping jack torso twist',
+        'Bear crawl',
+        'Speed skater lunge',
+      ].map((name) => ({ name, rounds: 4, restBetweenRounds: 0, steps: [w(name, 20), rest(10)] })),
     ],
   },
   {

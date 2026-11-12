@@ -1,6 +1,6 @@
 // Service worker: precache the app shell so the app works offline.
 // Bump CACHE whenever you ship changes so phones pick up the new files.
-const CACHE = 'wt-v1';
+const CACHE = 'wt-v2';
 
 const ASSETS = [
   './',

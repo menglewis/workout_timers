@@ -147,7 +147,8 @@ export function attachCues(engine, audio, getSettings, workout) {
     const prev = steps[index - 1];
     const firstOfBlock = !prev || prev.blockIdx !== step.blockIdx;
     const firstOfRound = firstOfBlock || prev.round !== step.round;
-    if (firstOfBlock && multiBlock && step.blockName) parts.push(`${step.blockName}.`);
+    const sameAsStep = step.blockName.trim().toLowerCase() === step.name.trim().toLowerCase();
+    if (firstOfBlock && multiBlock && step.blockName && !sameAsStep) parts.push(`${step.blockName}.`);
     if (firstOfRound && step.totalRounds > 1) parts.push(`Round ${step.round} of ${step.totalRounds}.`);
 
     if (step.type === 'rest') {
